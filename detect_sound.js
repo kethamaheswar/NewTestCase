@@ -28,7 +28,7 @@ const URL = process.env.URL || 'https://www.youtube.com/watch?v=sK1ODp0nDbM';
 (async() => {
 
 // Note: headless doesn't play audio. Launch headful chrome.
-const browser = await puppeteer.launch({headless: false});
+const browser = await puppeteer.launch({headless: false, args: ['--disable-infobars','--start-maximized'],});
 
 const page = await browser.newPage();
 await page.goto(URL, {waitUntil: 'networkidle2'});
