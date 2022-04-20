@@ -8,18 +8,15 @@ const puppeteer = require('puppeteer');
     await page.waitForTimeout('3000');
     await page.keyboard.press('Enter',{delay:10});
     await page.waitForXPath("//span[contains(text(),'Echo Dot (3rd Gen) - #1 smart speaker brand in Ind')]");
-    //await page.$x("//span[contains(text(),'Echo Dot (3rd Gen) - #1 smart speaker brand in Ind')]").then(async picture =>{
-     //   await picture[0].click();
-  //  }) 
-  await page.waitForTimeout('3000');
+   
+    await page.waitForTimeout('3000');
     const [picture] = await page.$x("//span[contains(text(),'Echo Dot (3rd Gen) - #1 smart speaker brand in Ind')]");
-
     await picture.click();
+
     await page.waitForSelector('#quantity');
     await page.select('#quantity','2');
-   await page.waitForSelector('#add-to-cart-button');
-  await page.click('#add-to-cart-button',{clickCount: 1});
-  
+    await page.waitForSelector('#add-to-cart-button');
+    await page.click('#add-to-cart-button',{clickCount: 1});  
     await page.waitForTimeout('5000');
     await browser.close();
 })();
