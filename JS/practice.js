@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 (async () =>{
-    const browser = await puppeteer.launch({headless:false,slowMo:10,args:['--s']});
+    const browser = await puppeteer.launch({headless:false,slowMo:10,args:['--start-maximized']});
     const page = await browser.newPage();
     await page.goto('https://www.amazon.in/');
     await page.waitForSelector('#twotabsearchtextbox');
