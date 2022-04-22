@@ -11,9 +11,10 @@ const puppeteer = require('puppeteer');
    })
     await page.waitForSelector('.plp-toolbar-nav__layout-filter-wrapper__filter-button');
     await page.click('.plp-toolbar-nav__layout-filter-wrapper__filter-button');
+
     await page.waitForXPath("//input[@name='sofas']");
-   await page.$x("//input[@name='sofas']").then(async sofas =>{
-      await sofas[0].evaluate(b => b.click());
+    await page.$x("//input[@name='sofas']").then(async sofas =>{
+        await sofas[0].evaluate(b => b.click());
   })
     await page.waitForSelector('.filter-apply__text');
     await page.click('.filter-apply__text');
