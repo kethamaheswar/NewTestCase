@@ -29,6 +29,12 @@ const puppeteer = require('puppeteer');
     await page.$x("//*[text()='Nomad Sofa']").then(async nomad =>{
         await nomad[0].click();
     })
+
+    await page.waitForXPath("//div[@title='Charcoal']");
+    await page.$x("//div[@title='Charcoal']").then(async colorChange =>{
+        await colorChange[0].evaluate(b => b.click());
+    })
+    
     await page.waitForXPath("//*[text()='Moveable chaise']");
     await page.$x("//*[text()='Moveable chaise']").then(async moveable =>{
         await moveable[0].click();
