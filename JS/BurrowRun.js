@@ -1,4 +1,3 @@
-
 const puppeteer = require('puppeteer');
 (async () =>{
     const browser = await puppeteer.launch({headless:false,args:['--start-maximized']});
@@ -19,7 +18,7 @@ const puppeteer = require('puppeteer');
     await page.click('.plp-toolbar-nav__layout-filter-wrapper__filter-button');
 
     await page.waitForXPath("//input[@name='sofas']");
-    await page.$x("//input[@name='sofas']").then(async sofas =>{
+    await page.$x("//input[@name='sofas']").then(async sofas =>{ 
         await sofas[0].evaluate(b => b.click());
   })
     await page.waitForSelector('.filter-apply__text');
@@ -30,10 +29,10 @@ const puppeteer = require('puppeteer');
         await nomad[0].click();
     })
 
-   /* await page.waitForXPath("//div[@title='Charcoal']");
+    await page.waitForXPath("//div[@title='Charcoal']");
     await page.$x("//div[@title='Charcoal']").then(async colorChange =>{
         await colorChange[0].evaluate(b => b.click());
-    })*/
+    })
     
     await page.waitForXPath("//div[@title='Arch']");
     await page.$x("//div[@title='Arch']").then(async armStyle => {
