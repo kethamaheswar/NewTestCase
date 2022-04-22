@@ -30,9 +30,9 @@ const puppeteer = require('puppeteer');
     })
 
     await page.waitForXPath("//div[@title='Charcoal']");
-    await page.$x("//div[@title='Charcoal']").then(async colorChange =>{
-        await colorChange[0].evaluate(b => b.click());
-    })
+    await page.$x("//div[@title='Charcoal']").then(async sofacolorChange =>{
+        await sofacolorChange[0].evaluate(b => b.click());
+    }) //code for sofa color change
     
     await page.waitForXPath("//div[@title='Arch']");
     await page.$x("//div[@title='Arch']").then(async armStyle => {
@@ -40,8 +40,8 @@ const puppeteer = require('puppeteer');
     })
 
     await page.waitForXPath("//*[text()='Moveable chaise']");
-    await page.$x("//*[text()='Moveable chaise']").then(async moveable =>{
-        await moveable[0].click();
+    await page.$x("//*[text()='Moveable chaise']").then(async upgrade =>{
+        await upgrade[0].click();
     })
     await page.waitForXPath("//div[@class='pdp-add-button btn btn-yellow']");
     await page.$x("//div[@class='pdp-add-button btn btn-yellow']").then(async addcart =>{
