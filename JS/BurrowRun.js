@@ -2,8 +2,14 @@ const puppeteer = require('puppeteer');
 (async () =>{
     const browser = await puppeteer.launch({headless:false,args:['--start-maximized']});
     const page = await browser.newPage();
+    //set viewPort of the page
+    await page.setViewport({
+        "width":1400,
+        "height":600
+    });
+
     await page.goto('https://dev-pub.burrow.com/');
-    //await page.waitForSelector('.bx-close-xsvg');
+    //await page.waitForSelector('.bx-close-xsvg'); this code is for popup page
     //await page.click('.bx-close-xsvg');
     await page.waitForXPath("//*[text()='SHOP SEATING']");
     await page.$x("//*[text()='SHOP SEATING']").then(async shopseat =>{
@@ -36,6 +42,6 @@ const puppeteer = require('puppeteer');
     await page.$x("//button[@class='button btn-charcoal']").then(async checkout =>{
         await checkout[0].click();
     })
-    
+    await page.waitForTimeout('10000');
     await browser.close();
 })();
