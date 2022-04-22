@@ -1,3 +1,4 @@
+
 const puppeteer = require('puppeteer');
 (async () =>{
     const browser = await puppeteer.launch({headless:false,args:['--start-maximized']});
@@ -9,8 +10,7 @@ const puppeteer = require('puppeteer');
     });
 
     await page.goto('https://dev-pub.burrow.com/');
-    //await page.waitForSelector('.bx-close-xsvg'); this code is for popup page
-    //await page.click('.bx-close-xsvg');
+
     await page.waitForXPath("//*[text()='SHOP SEATING']");
     await page.$x("//*[text()='SHOP SEATING']").then(async shopseat =>{
        await shopseat[0].click();
@@ -30,11 +30,16 @@ const puppeteer = require('puppeteer');
         await nomad[0].click();
     })
 
-    await page.waitForXPath("//div[@title='Charcoal']");
+   /* await page.waitForXPath("//div[@title='Charcoal']");
     await page.$x("//div[@title='Charcoal']").then(async colorChange =>{
         await colorChange[0].evaluate(b => b.click());
-    })
+    })*/
     
+    await page.waitForXPath("//div[@title='Arch']");
+    await page.$x("//div[@title='Arch']").then(async armStyle => {
+        await armStyle[0].click();
+    })
+
     await page.waitForXPath("//*[text()='Moveable chaise']");
     await page.$x("//*[text()='Moveable chaise']").then(async moveable =>{
         await moveable[0].click();
