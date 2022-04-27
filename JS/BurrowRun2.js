@@ -17,6 +17,14 @@ const puppeteer = require('puppeteer');
         await seating[0].click();
     })
     await page.goBack();
+    await page.waitForXPath("//header/div[3]/div[1]/div[1]/div[3]/button[1]/span[1]");
+    await page.$x("//header/div[3]/div[1]/div[1]/div[3]/button[1]/span[1]").then(async seating=>{
+        await seating[0].evaluate(b => b.click());
+})
+    await page.waitForXPath("//header/div[3]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]");
+    await page.$x("//header/div[3]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]").then(async dresser=>{
+        await dresser[0].evaluate(e=>e.click());
+    })
     await page.waitForTimeout('5000');
     await browser.close();
 })();
