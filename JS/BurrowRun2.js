@@ -25,6 +25,14 @@ const puppeteer = require('puppeteer');
     await page.$x("//header/div[3]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]").then(async dresser=>{
         await dresser[0].evaluate(e=>e.click());
     })
+    await page.waitForXPath("//a[text()='Prospect 3-Drawer Low Dresser']");
+    await page.$x("//a[text()='Prospect 3-Drawer Low Dresser']").then(async drawer =>{
+        await drawer[0].click();
+    })
+    await page.waitForXPath("//div[@class='OK color-picker-color active']");
+    await page.$x("//div[@class='OK color-picker-color active']").then(async coloroak=>{
+        await coloroak[0].evaluate(e=>e.click());
+    })
     await page.waitForTimeout('5000');
     await browser.close();
 })();
