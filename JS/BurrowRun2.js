@@ -27,12 +27,17 @@ const puppeteer = require('puppeteer');
     })
     await page.waitForXPath("//a[text()='Prospect 3-Drawer Low Dresser']");
     await page.$x("//a[text()='Prospect 3-Drawer Low Dresser']").then(async drawer =>{
-        await drawer[0].click();
+        await drawer[0].evaluate(e=>e.click());
     })
     await page.waitForXPath("//body/div[@id='main']/div[1]/div[3]/div[1]/section[1]/section[1]/div[2]/div[2]/div[1]/div[1]/div[2]");
     await page.$x("//body/div[@id='main']/div[1]/div[3]/div[1]/section[1]/section[1]/div[2]/div[2]/div[1]/div[1]/div[2]").then(async coloroak=>{
         await coloroak[0].evaluate(e=>e.click());
     })
+    await page.waitForXPath("//*[@class='pdp-add-select__single-value css-1uccc91-singleValue']");
+    await page.$x("//*[@class='pdp-add-select__single-value css-1uccc91-singleValue']").then(async choose=>{
+        await choose[0].evaluate(e=>e.click());
+    })
+    
     await page.waitForTimeout('5000');
     await browser.close();
 })();
