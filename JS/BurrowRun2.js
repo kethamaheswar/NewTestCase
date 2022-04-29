@@ -8,10 +8,11 @@ const puppeteer = require('puppeteer');
         'height':600
     });
     await page.goto('https://dev-pub.burrow.com/');
-    await page.waitForXPath("//header/div[3]/div[1]/div[1]/div[1]/button[1]/span[1]");
-    await page.$x("//header/div[3]/div[1]/div[1]/div[1]/button[1]/span[1]").then(async seating=>{
-        await seating[0].evaluate(b => b.click());
-    })
+    await page.waitForSelector("[aria-label='To Sectionals']");
+    await page.click("[aria-label='To Sectionals']");
+   //  await page.$x("[aria-label='To Sectionals']").then(async seating=>{
+   //     await seating[0].evaluate(b => b.click());
+   // })
     await page.waitForXPath("//header/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]");
     await page.$x("//header/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]").then(async seating=>{
         await seating[0].click();
