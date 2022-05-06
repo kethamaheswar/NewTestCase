@@ -1,6 +1,12 @@
-console.log("new to the programe");
-console.log("edited in the github");
-console.log("edited in the vs codeer");
-console.log("branch code");
-console.log("edited in the vs codew");
-console.log("edied in vs code");
+import Burrow from './burrowRun.js';
+const elements={
+    quanityTextBox: '.pdp-add .pdp-add-select__single-value'
+
+}
+export default class newone extends Burrow{
+async changeQuantityValue(index) {
+    await this.page.waitForSelector(elements.quanityTextBox);
+    await this.page.click(elements.quanityTextBox);
+    await this.page.click(`.pdp-add #react-select-2-option-${index}`);
+  }
+}

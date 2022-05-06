@@ -1,4 +1,9 @@
+
+import newone from './newone.js';
+import Newone from './newone.js';
+
 const puppeteer = require('puppeteer');
+const URL = 'https://dev-pub.burrow.com/';
 (async () =>{
     const browser = await puppeteer.launch({headless:false,args:['--start-maximized']});
     const page = await browser.newPage();
@@ -7,8 +12,8 @@ const puppeteer = require('puppeteer');
         "width":1400,
         "height":600
     });
-
-    await page.goto('https://dev-pub.burrow.com/');
+         demo = await new Newone(page, URL);//create object for newone file
+    await page.goto(URL);
 
     await page.waitForXPath("//*[text()='SHOP SEATING']");
     await page.$x("//*[text()='SHOP SEATING']").then(async shopseat =>{
@@ -43,10 +48,13 @@ const puppeteer = require('puppeteer');
     await page.$x("//*[text()='Moveable chaise']").then(async upgrade =>{
         await upgrade[0].click();
     })
+   
     await page.waitForXPath("//div[@class='pdp-add-button btn btn-yellow']");
     await page.$x("//div[@class='pdp-add-button btn btn-yellow']").then(async addcart =>{
         await addcart[0].click();
     })
+
+    await demo.changeQuantityValue(2);
 
     await page.waitForXPath("//button[@class='button btn-charcoal']");
     await page.$x("//button[@class='button btn-charcoal']").then(async checkout =>{
